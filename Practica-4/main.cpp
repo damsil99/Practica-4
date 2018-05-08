@@ -1,109 +1,51 @@
-#include <iostream>
 #include "enrutador.h"
-#include <vector>
+#include <iostream>
+#include<vector>
 
 using namespace std;
 
-class todo
-{
-        public:
-        todo(string nombre);
-        string nombre;
-        vector <todo> todos_los_nodos;
-        vector<todo> all;
-        void todoslosnodos(todo nodo);
-        void imprimir();
-        bool comparar(string nom);
-
-};
-
-todo::todo(string _nombre)
-{
-    nombre = _nombre;
-}
-
-void todo::todoslosnodos(todo nodo)
-{
-    todos_los_nodos.push_back(nodo);
-
-}
-
-void todo::imprimir()
-{
-
-    cout<<"MOSTRANDO ENRUTADORES "<< this->nombre <<endl;
-
-    for(int i=0; i<todos_los_nodos.size();i++)
-    {
-        cout<< todos_los_nodos[i].nombre << " " << this->nombre << endl;
-    }
-}
-
-bool todo::comparar(string nom)
-{
-    for(int i=0; i<todos_los_nodos.size();i++)
-    {
-        if( todos_los_nodos[i].nombre==nom)
-        {
-            return true;
-        }
-
-    }
-
-}
-
-
 int main()
 {
+    enrutador red;
+    int opc=0;
+    while(opc!=7){
+    cout<<"\n\t    MENU\t"<<endl;
+    cout<<"-[1] Para crear un nuevo enrutador"<<endl;
+    //cout<<"-[2] Para remover un enrutador"<<endl;
+    //cout<<"-[2] Para actualizar datos de un enrutador"<<endl;
+   // cout<<"-[2] Para cargar archivo"<<endl;
+    cout<<"-[2] Para saber los costos de envio"<<endl;
+    cout<<"-[3] Para saber el mejor camino de envio"<<endl;
+    cout<<"-[4] Para salir"<<endl;
+    cout<<"Ingresar opcion :"<<endl;
+    cin>>opc;
+    switch (opc) {
+    case 1:
+        red.agregar();
+        break;
+    //case 2:red.eliminar();
+        //break;
+   // case 2:red.modificar();
+     //   break;
+   // case 2:
+     //   red.leer();
+       // break;
+    case 2:red.Costos();
+        red.imprimir();
+        break;
 
-    string name,reference;
-    todo cosas(" ");
-    int aux=0;
+    case 3:red.Costos();
+        red.MRuta();
+        break;
 
-    while (aux==0)
+    case 4:
+        break;
 
-    {
-    cout<<"Ingrese el nombre del enrutador: "<<endl;
-    cin>>name;
-    cout<<"Ingrese referencia: "<<endl;
-    cin>>reference;
-    aux++;
-        if(aux==1)
-        {
-            Enrutador name(reference);
-        }
-    cosas.todoslosnodos(reference);
-    cout<<"\nDesea crear mas enrutadores:\npressure [0]\n\nDesea conectar nodos?\npressure [1]\n\nDesea salir?\npressure [2]"<<endl;
-    cin>>aux;
-
-        if(aux==1)
-        {
-            bool val=false;
-            string auxc;
-            cout<<"Ingrese nombre del nodo a enlazar"<<endl;
-            cin>>name;
-            auxc=name;
-            cout<<"Ingrese la referencia"<<endl;
-            cin>>reference;
-            Enrutador name(reference);
-            val=cosas.comparar(auxc);
-            if(val==true)
-            {
-
-
-            }
-
-
-
-
-        }
-
+    default:
+        cout<<"Opcion no valida "<<endl;
+        break;
+    }
     }
 
-    cosas.imprimir();
-
-
-
-
-    return 0;
+return 0;
 }

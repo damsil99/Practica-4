@@ -1,25 +1,27 @@
 #ifndef ENRUTADOR_H
 #define ENRUTADOR_H
-#include <iostream>
-#include <vector>
-
+#include<iostream>
+#include<map>
+#include<vector>
+#include<fstream>
 using namespace std;
-
-
-class Enrutador
+class enrutador
 {
 public:
-    Enrutador(string nombre);
-    string nombre_nodo;
-    vector <Enrutador> nodo_cercano;
-    //vector <Enrutador> todoslosnodos;
-    vector <int> costos;
 
-    void agregar_nodo_cercano(Enrutador nodo, int costo);
-    void imprimir_nodos_cercanos();
-    //void todos_los_nodos(Enrutador nodo);
-
-
+    int c=0;
+    vector<int> mod;
+    vector<int> costos;
+    vector<bool>conexion;
+    vector<vector<int>> Enlases;
+    void imprimir(char);
+    void modificar(void);
+    void leer(void);
+    void agregar(void);
+    void eliminar(void);
+    void Costos(void);
+    void MRuta(void);
+    void imprimir(void);
 };
 
 #endif // ENRUTADOR_H
